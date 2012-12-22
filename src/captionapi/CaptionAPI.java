@@ -7,7 +7,7 @@ import java.util.*;
 public class CaptionAPI {
   private static CaptionAPI instance = new CaptionAPI(StringTranslate.getInstance().getCurrentLanguage());
   private static boolean captioning = false;
-  private static Properties captions;
+  private static Properties captions = new Properties();
   private static String currentLanguage;
 
   private CaptionAPI(String lang) {
