@@ -1,5 +1,6 @@
-package net.minecraft.src;
+package captionapi;
 
+import net.minecraft.src.*;
 import net.minecraft.client.Minecraft;
 
 public class CaptionButton extends GuiButton {

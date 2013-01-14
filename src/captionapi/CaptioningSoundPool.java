@@ -1,5 +1,6 @@
-package net.minecraft.src;
+package captionapi;
 
+import net.minecraft.src.*;
 import java.io.File;
 import java.net.*;
 import java.util.*;
