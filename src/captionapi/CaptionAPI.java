@@ -8,7 +8,7 @@ import java.util.*;
 public class CaptionAPI {
   private static CaptionAPI instance = new CaptionAPI(StringTranslate.getInstance().getCurrentLanguage());
   private static boolean captioning = false;
-  private static Properties captions;
+  private static Properties captions = new Properties();
   private static String currentLanguage = null;
 
   	private CaptionAPI(String lang) {
@@ -22,7 +22,7 @@ public class CaptionAPI {
   			return true;
   		}
   		try {
-  			BufferedReader captionFile = new BufferedReader(new InputStreamReader(CaptionAPI.class.getResourceAsStream("/captions/" + lang + ".captions"), "UTF-8"));
+  			BufferedReader captionFile = new BufferedReader(new InputStreamReader(CaptionAPI.class.getResourceAsStream("/captionapi/" + lang + ".captions"), "UTF-8"));
   			captions = new Properties(); // After file in case invalid language is set
   			for (String line=captionFile.readLine(); line!=null; line=captionFile.readLine()) {
   				line = line.trim();

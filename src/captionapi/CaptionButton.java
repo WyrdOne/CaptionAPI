@@ -20,7 +20,7 @@ public class CaptionButton extends GuiButton {
 	public boolean mousePressed(Minecraft mc, int par2, int par3) {
     if (enabled && drawButton && par2>=xPosition && par3>=yPosition && par2<xPosition+width && par3<yPosition+height) {
       CaptionAPI.setCaptioning(!CaptionAPI.getCaptioning());
-      mod_Captioning.saveOptions();
+      mod_CaptionAPI.saveOptions();
       updateButton();
      	return true;
     }
