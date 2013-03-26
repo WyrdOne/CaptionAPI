@@ -8,7 +8,7 @@ import captionapi.*;
 public class mod_CaptionAPI extends BaseMod {
 	// Copyright/license info
 	private static final String Name = "Captioning";
-	private static final String Version = "0.3 (For use with Minecraft 1.5)";
+	private static final String Version = "0.31 (For use with Minecraft 1.5.1)";
 	private static final String Copyright = "All original code and images (C) 2012-2013, Jonathan \"Wyrd\" Brazell";
 	private static final String License = "This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.";
 	// Other variables
