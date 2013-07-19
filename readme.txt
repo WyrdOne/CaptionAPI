@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Caption API - Mod for Minecraft
 //    by Jonathan "Wyrd" Brazell
-//    Version: 0.31
-//    Minecraft Version: 1.5.1
+//    Version: 0.4
+//    Minecraft Version: 1.6.2
 ///////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////OVERVIEW///////////////////////////////////
@@ -13,11 +13,14 @@
 //////////////////////////////////INSTALLATION/////////////////////////////////
 // 1. Install ModLoader (http://www.minecraftforum.net/topic/75440-/).
 //    a) FML/Forge will also work.
-// 2. Copy CaptionAPI-1.5.zip  to your mods folder
+// 2. Copy CaptionAPI-1.6.2.zip  to your mods folder
 // 3. Start up minecraft and play.
 ///////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////VERSION HISTORY///////////////////////////////
+// 0.4 - Updated to Minecraft 1.6.2
+//       Added sounds for horses and other assorted sounds.
+//       Added localization to option button.
 // 0.31 - Recompiled for Minecraft 1.5.1
 // 0.3 - Updated to Minecraft 1.5, added support for MOAPI.
 // 0.21 - Update to 1.4.7, minor glitch was causing issues.
@@ -34,7 +37,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////LICENSE////////////////////////////////////
-// This software is Copyright © 2012-2013 Jonathan "Wyrd" Brazell and is
+// This software is Copyright ï¿½ 2012-2013 Jonathan "Wyrd" Brazell and is
 // licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0
 // Unported License. (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 ///////////////////////////////////////////////////////////////////////////////
