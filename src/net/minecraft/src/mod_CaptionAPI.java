@@ -2,25 +2,25 @@ package net.minecraft.src;
 
 import java.io.*;
 import java.util.*;
-import net.minecraft.client.Minecraft;
 import captionapi.*;
+import com.wyrdworld.util.*;
 
 public class mod_CaptionAPI extends BaseMod {
 	// Copyright/license info
 	private static final String Name = "Captioning";
-	private static final String Version = "0.31 (For use with Minecraft 1.5.1)";
+	private static final String Version = "0.4 (For use with Minecraft 1.6.2)";
 	private static final String Copyright = "All original code and images (C) 2012-2013, Jonathan \"Wyrd\" Brazell";
 	private static final String License = "This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.";
 	// Other variables
 	private static Minecraft mc = Minecraft.getMinecraft();
-	private static File configFile = new File(mc.getMinecraftDir(), "/config/captioning.properties");
-	private static CaptioningSoundPool captioningSoundPool;
+	private static File configFile = new File(mc.mcDataDir, "/config/captioning.properties");
 	private static int tickCount = 0;
 	private boolean cacheOption = false;
+	private SoundPool captioningSoundPool;
       	
 	public void load() {
 		loadOptions();
-		setupSoundPool();
+		setupSoundManager();
 		ModLoader.setInGameHook(this, true, false);
 		if (ModLoader.isModLoaded("Mod Options API (MOAPI)") || ModLoader.isModLoaded("mod_MOAPI")) {
 			MOAPICaption.setup();
@@ -48,22 +48,18 @@ public class mod_CaptionAPI extends BaseMod {
 		} catch (Exception ignored) {}
 	}
 
-	private void setupSoundPool() {
-		SoundPool parent;
+	private void setupSoundManager() {
+		SoundPool parent = null;
 		try {
-			parent = (SoundPool)ModLoader.getPrivateValue(SoundManager.class, mc.sndManager, 1);
-		} catch (Exception e) {
-			// WTF, we got issues
-			return;
-		}  
+			parent = ReflectionHelper.getPrivateValue(SoundManager.class, mc.sndManager, SoundPool.class, 0);
+		} catch (Exception ignored) {}
 		if (!(parent instanceof CaptioningSoundPool)) {
 			// Replace sound pool
-			captioningSoundPool = new CaptioningSoundPool(parent);
 			try {
-				ModLoader.setPrivateValue(SoundManager.class, mc.sndManager, 1, captioningSoundPool);
-			} catch (Exception e) {
-				// Cannot set the captioning up, it will try again in a second.
-			}
+				ResourceManager resourceManager = ReflectionHelper.getPrivateValue(Minecraft.class, mc, ResourceManager.class, 0);
+				captioningSoundPool = new CaptioningSoundPool(parent, resourceManager, "sound", true);
+				ReflectionHelper.setPrivateValue(SoundManager.class, mc.sndManager, SoundPool.class, 0, captioningSoundPool);
+			} catch (Exception ignored) {}
 		}
 	}
 	
@@ -78,7 +74,7 @@ public class mod_CaptionAPI extends BaseMod {
 						yPos = btn.yPosition;
 					}
 				}
-				screen.buttonList.add(new CaptionButton(1064, screen.width / 2 + 5, yPos, 150, 20, "Captioning"));
+				screen.buttonList.add(new CaptionButton(1064, screen.width / 2 + 5, yPos, 150, 20, CaptionAPI.getCaption("button.text")));
 			}
 		} else {
 			cacheOption = false;
@@ -93,7 +89,7 @@ public class mod_CaptionAPI extends BaseMod {
 			if (mc.gameSettings.soundVolume==0.0F) {
 				mc.gameSettings.soundVolume = 0.01F;
 			}
-			setupSoundPool();
+			setupSoundManager();
 			tickCount = 0;
 		}
 		return true;

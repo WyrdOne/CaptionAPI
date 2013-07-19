@@ -6,12 +6,13 @@ import java.net.*;
 import java.util.*;
 
 public class CaptionAPI {
-  private static CaptionAPI instance = new CaptionAPI(StringTranslate.getInstance().getCurrentLanguage());
+  private static CaptionAPI instance = new CaptionAPI(Minecraft.getMinecraft().gameSettings.language);
   private static boolean captioning = false;
-  private static Properties captions = new Properties();
+  private static Properties captions;
   private static String currentLanguage = null;
 
   	private CaptionAPI(String lang) {
+  		captions = new Properties();
   		if (!setLanguage(lang)) {
   			setLanguage("en_US"); // Default to english if language not found
   		}

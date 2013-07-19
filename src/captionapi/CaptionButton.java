@@ -1,7 +1,6 @@
 package captionapi;
 
 import net.minecraft.src.*;
-import net.minecraft.client.Minecraft;
 
 public class CaptionButton extends GuiButton {
   public static String buttonText = "Captioning";
@@ -13,7 +12,7 @@ public class CaptionButton extends GuiButton {
 	}
 
   private void updateButton() {
-    displayString = buttonText + ": " + ((CaptionAPI.getCaptioning()) ? "ON" : "OFF");
+    displayString = buttonText + ": " + CaptionAPI.getCaption((CaptionAPI.getCaptioning()) ? "button.on" : "button.off");
   }
 
 	@Override

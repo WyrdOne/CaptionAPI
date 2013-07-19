@@ -9,7 +9,8 @@ public class MOAPICaption extends ModOptionCallback {
 	
 	public static void setup() {
 		captionOptions = ModOptionsAPI.addMod("captionapi", "Caption API").setClientMode();
-		captionOptions.addBooleanOption("Captioning").setValue(CaptionAPI.getCaptioning()).setCallback(instance);
+		ModOptionBoolean option = (ModOptionBoolean)captionOptions.addBooleanOption("Captioning", CaptionAPI.getCaption("button.text"), CaptionAPI.getCaptioning()).setCallback(instance);
+		option.setLabels(CaptionAPI.getCaption("button.on"), CaptionAPI.getCaption("button.off"));
 	}
 	
 	public void onChange(ModOption option) {
